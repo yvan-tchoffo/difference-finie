@@ -23,12 +23,13 @@ public class DefaultFunction implements Function {
         this.constant = constant;
     }
     
+    @Override
     public ArrayList<Double> values(int n){
-        if(n<0) {
+        if(n<2) {
             return null;
         }else{
             ArrayList values = new ArrayList<Double>();
-            for(int i=0;i!=n;i++){
+            for(int i=0;i!=n-2;i++){
                 values.add(constant);
             }
             return values;

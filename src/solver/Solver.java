@@ -5,14 +5,12 @@
  */
 package solver;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Yvan TCHOFFO
  */
-public interface Matrice {
-    
-    public double get(int row,int pos) throws Exception;
-    public void set(int row,int pos,double x) throws Exception;
-    
-    
+public interface Solver {
+    public ArrayList<Double> solve(int dim, ArrayList<Double> val, double u0,double u1);
 }

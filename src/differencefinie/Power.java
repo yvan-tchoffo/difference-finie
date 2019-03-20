@@ -35,7 +35,7 @@ public class Power implements Function {
             ArrayList values = new ArrayList<Double>();
             double x0 = 0;
             double x;
-            for(int i=0;i!=n;i++){
+            for(int i=1;i!=n-1;i++){
                 x = x0 + (i*1.0/n-1);
                 values.add(Math.pow(x, power));
             }
