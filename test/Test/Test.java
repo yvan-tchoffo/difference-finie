@@ -11,7 +11,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import solver.*;
+import static Test.DefaultTestLogger.logTest;
 
 /**
  *
@@ -21,9 +24,14 @@ public class Test {
     static String fileName = "data.txt";
     static String line = null;
     private static final double absTol = 1e-15;
+    static String classeATester="solver.SimpleSolver";
     public static double test(Solver solver){
         double successrate = 0;
         double total = 0;
+        long startTime=System.currentTimeMillis();
+        Map parTest=new HashMap();
+        String methodToTest="SimpleSolver.solve";
+        String testFileLogger="Test.FileTestLogger";
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -33,37 +41,55 @@ public class Test {
                 String[] values = line.split(" ");
                 int i = Integer.parseInt(values[0]);
                 int dim = Integer.parseInt(values[1]);
+                parTest.put("classtotest",classeATester);
+                parTest.put("teststarttime",""+startTime);
+                parTest.put("testreference",methodToTest); 
+                parTest.put("testLogger0",testFileLogger);
+                logTest(parTest,"start",false);
                 switch(i){
                     case(0):{
                         DefaultFunction f = new DefaultFunction(0);
                         result = solver.solve(dim, f.values(dim), 0, 0);
-                        if(oracle(result,i,dim))
+                        parTest.put("testcase", "fonction nulle");
+                        boolean rt = oracle(result,i,dim); 
+                        parTest.put("testresult",rt);
+                        if(rt)
                             successrate++;
                         break;
                     }
                     case(1):{
                         DefaultFunction f = new DefaultFunction(0);
                         result = solver.solve(dim, f.values(dim), 1, 1);
-                        if(oracle(result,i,dim))
+                        parTest.put("testcase", "fonction unité");
+                        boolean rt = oracle(result,i,dim); 
+                        parTest.put("testresult",rt);
+                        if(rt)
                             successrate++;
                         break;
                     }
                     case(2):{
                         DefaultFunction f = new DefaultFunction(0);
                         result = solver.solve(dim, f.values(dim), 0, 1);
-                        if(oracle(result,i,dim))
+                        parTest.put("testcase", "fonction identité");
+                        boolean rt = oracle(result,i,dim); 
+                        parTest.put("testresult",rt);
+                        if(rt)
                             successrate++;
                         break;
                     }
                     case(3):{
                         DefaultFunction f = new DefaultFunction(-2);
                         result = solver.solve(dim, f.values(dim), 0, 1);
-                        if(oracle(result,i,dim))
+                        parTest.put("testcase", "fonction X^2");
+                        boolean rt = oracle(result,i,dim); 
+                        parTest.put("testresult",rt);
+                        if(rt)
                             successrate++;
                         break;
                     }
                 }
-            }   
+                parTest.put("testendtime",""+System.currentTimeMillis());
+            } 
             bufferedReader.close();
             System.out.println("Taux : " +successrate*100/total+"%" );
         }
@@ -76,6 +102,9 @@ public class Test {
             System.out.println(
                 "Error reading file '" 
                 + fileName + "'");                  
+        }
+        catch(Exception e){
+            e.printStackTrace();
         }
         
         return successrate;
@@ -152,8 +181,9 @@ public class Test {
         
     }
     
-    public static void main(String args[]){
-        test(new SimpleSolver());
+    public static void main(String args[]) throws Exception{
+        String classeATester = "solver.SimpleSolver";
+        test((Solver)Class.forName(classeATester).newInstance());
     }
     
     
