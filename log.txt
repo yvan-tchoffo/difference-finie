@@ -203,3 +203,32 @@ SUCCESS = 22;ERROR = 6;RATIO = 78.57142857142857
 ---;fonction identité param=-1;{method};1554024907193;1554024907193;0;true;---;1554024907193;---;
 ---;fonction identité param=-2;{method};1554024907217;1554024907218;1;true;---;1554024907217;---;
 SUCCESS = 22;ERROR = 6;RATIO = 78.57142857142857
+---;Fonction unité param=-2;{method};1554035299042;1554035299189;147;true;---;1554035299042;---;
+---;Fonction unité param=0;{method};1554035299295;1554035299295;0;true;---;1554035299295;---;
+---;Fonction unité param=9000;{method};1554035299311;-1;-1;false;expected: <true> but was: <false>;1554035299311;---;
+---;Fonction unité param=3;{method};1554035299400;-1;-1;false;expected: <true> but was: <false>;1554035299400;---;
+---;Fonction unité param=2;{method};1554035299418;1554035299418;0;true;---;1554035299418;---;
+---;Fonction unité param=-1;{method};1554035299479;1554035299483;4;true;---;1554035299479;---;
+---;Fonction unité param=1;{method};1554035299586;1554035299594;8;true;---;1554035299586;---;
+---;Dimension 0 > 1 ===> with parameters (-1);{method};1554035299640;1554035299641;1;true;---;1554035299640;---;
+---;Dimension 0 > 2 ===> with parameters (3);{method};1554035299754;1554035299760;6;true;---;1554035299754;---;
+---;Dimension 0 > 3 ===> with parameters (0);{method};1554035299802;1554035299805;3;true;---;1554035299802;---;
+---;Dimension 0 > 4 ===> with parameters (9000);{method};1554035299817;1554035299818;1;true;---;1554035299817;---;
+---;Dimension 0 > 5 ===> with parameters (2);{method};1554035299839;1554035299840;1;true;---;1554035299839;---;
+---;Dimension 0 > 6 ===> with parameters (-2);{method};1554035299853;1554035299854;1;true;---;1554035299853;---;
+---;Dimension 0 > 7 ===> with parameters (1);{method};1554035299872;1554035299872;0;true;---;1554035299872;---;
+---;Fonction X^2 param=2;{method};1554035299899;1554035299900;1;true;---;1554035299899;---;
+---;Fonction X^2 param=0;{method};1554035299911;1554035299912;1;true;---;1554035299911;---;
+---;Fonction X^2 param=9000;{method};1554035299925;-1;-1;false;expected: <true> but was: <false>;1554035299925;---;
+---;Fonction X^2 param=3;{method};1554035299952;-1;-1;false;expected: <true> but was: <false>;1554035299952;---;
+---;Fonction X^2 param=1;{method};1554035299976;1554035299980;4;true;---;1554035299976;---;
+---;Fonction X^2 param=-1;{method};1554035299996;1554035300000;4;true;---;1554035299996;---;
+---;Fonction X^2 param=-2;{method};1554035300011;1554035300012;1;true;---;1554035300011;---;
+---;fonction identité param=1;{method};1554035300033;1554035300033;0;true;---;1554035300033;---;
+---;fonction identité param=0;{method};1554035300069;1554035300069;0;true;---;1554035300069;---;
+---;fonction identité param=9000;{method};1554035300085;-1;-1;false;expected: <true> but was: <false>;1554035300085;---;
+---;fonction identité param=3;{method};1554035300117;-1;-1;false;expected: <true> but was: <false>;1554035300117;---;
+---;fonction identité param=2;{method};1554035300137;1554035300145;8;true;---;1554035300137;---;
+---;fonction identité param=-1;{method};1554035300173;1554035300177;4;true;---;1554035300173;---;
+---;fonction identité param=-2;{method};1554035300189;1554035300189;0;true;---;1554035300189;---;
+SUCCESS = 22;ERROR = 6;RATIO = 78.57142857142857
