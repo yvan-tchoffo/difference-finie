@@ -120,26 +120,20 @@ public class Test {
                 case(0):{
                     double max = 0;
                     for(Double i:values){
-                        if(Math.abs(i) > max)
-                            max = Math.abs(i); 
+                        if(Math.abs(i) > absTol)
+                            return false;
                     }
-                    if(max<absTol)
-                        return true;
-                    else 
-                        return false;
+					return true;
                 }
                 case(1):{
                     double max = 0;
                     double x = 0;
                     for(Double i : values){
                         x = Math.abs(i-1); 
-                        if(x > max)
-                            max = x; 
+                       if( x > absTol)
+                            return false;  
                     }
-                    if(max<absTol)
-                        return true;
-                    else 
-                        return false;
+					return false;
                 }
                 
                 case(2):{
@@ -147,29 +141,20 @@ public class Test {
                     double max = 0 ;
                     for(int i =0; i!=values.size();i++){
                         x = Math.abs(values.get(i) - ((i+1)*1.0/dim-1)); 
-                        if( x > max)
-                            max = x;
-                        
+                        if( x > absTol)
+                            return false;  
                     }
-                    if(max<absTol)
-                        return true;
-                    else 
-                        return false;
+					return false;
                 }
                 
                 case(3):{
-                    double x =0;
                     double max = 0 ;
                     for(int i =0; i!=values.size();i++){
                         x = Math.abs(values.get(i) - Math.pow(((i+1)*1.0/dim-1), 2)); 
-                        if( x > max)
-                            max = x;
-                        
+                        if( x > absTol)
+                            return false;  
                     }
-                    if(max<absTol)
-                        return true;
-                    else 
-                        return false;
+					return false;
                 }
                 
                 default:{
