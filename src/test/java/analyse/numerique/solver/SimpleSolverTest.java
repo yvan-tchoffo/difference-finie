@@ -26,7 +26,8 @@ import analyse.numerique.utils.LoggingExtension;
 public class SimpleSolverTest {
     public static String fileName = SimpleSolverTest.class.getResource("/data.txt").toExternalForm();
     public static String line = null;
-    private static final double absTol = 1e-15;
+    private static final double ABSOLUTE_TOLERANCE = 1e-12;
+    private static final double RELATIVE_TOLERANCE = 1e-8;
     static ArrayList<Integer> none;
     static ArrayList<Integer> one;
     static ArrayList<Integer> two;
@@ -90,7 +91,7 @@ public class SimpleSolverTest {
         ArrayList<Double> solve = result(0, 0.0, 0, 0);
         if (solve != null)
             for (Double i : solve)
-                assertTrue(Math.abs(i) < absTol, "njunjnjn" + dim);
+                assertTrue(Math.abs(i) < ABSOLUTE_TOLERANCE, "njunjnjn" + dim);
 
     }
 
@@ -101,7 +102,7 @@ public class SimpleSolverTest {
         ArrayList<Double> result = result(dim, 0.0, 1, 1);
         if (result != null)
             for (Double i : result)
-                assertTrue(Math.abs(i - 1) < absTol);
+                assertTrue(Math.abs(i - 1) < RELATIVE_TOLERANCE);
 
     }
 
@@ -110,9 +111,13 @@ public class SimpleSolverTest {
     @MethodSource("two")
     public void twoDimensionTest(int dim) {
         ArrayList<Double> result = result(dim, 0.0, 0, 1);
-        if (result != null)
-            for (int i = 0; i != result.size(); i++)
-                assertTrue(Math.abs(result.get(i) - ((i + 1) * 1.0 / dim - 1)) < absTol);
+        if (result != null) {
+            for (int i = 0; i != result.size(); i++) {
+                double m = (i + 1) * 1.0 / dim - 1;
+                assertTrue(m != 0.0 ? Math.abs(result.get(i) / m - 1) < RELATIVE_TOLERANCE
+                        : Math.abs(result.get(i) - m) < ABSOLUTE_TOLERANCE);
+            }
+        }
 
     }
 
@@ -121,9 +126,13 @@ public class SimpleSolverTest {
     @MethodSource("three")
     public void threeDimensionTest(int dim) {
         ArrayList<Double> result = result(dim, -2.0, 0, 1);
-        if (result != null)
-            for (int i = 0; i != result.size(); i++)
-                assertTrue(Math.abs(result.get(i) - Math.pow(((i + 1) * 1.0 / dim - 1), 2)) < absTol);
+        if (result != null) {
+            for (int i = 0; i != result.size(); i++) {
+                double m = Math.pow(((i + 1) * 1.0 / dim - 1), 2);
+                assertTrue(m != 0.0 ? Math.abs(result.get(i) / m - 1) < RELATIVE_TOLERANCE
+                        : Math.abs(result.get(i) - m) < ABSOLUTE_TOLERANCE);
+            }
+        }
 
     }
 

@@ -5,10 +5,7 @@ import analyse.numerique.number.NumberWrapper;
 /**
  * Function
  */
-public interface Function<T extends Number & Comparable<T>, P extends NumberWrapper<T, P>> {
-    @SuppressWarnings("unchecked")
-    public P get(P... args);
+public interface Function<T extends Number & Comparable<T>, P extends NumberWrapper<T, P>>
+        extends java.util.function.Function<P, P> {
 
-    @SuppressWarnings("unchecked")
-    public P get(T... args);
 }
